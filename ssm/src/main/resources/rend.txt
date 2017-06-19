@@ -1,0 +1,3 @@
+用eclipse导入web项目时 如果eclipse安装了wtp插件在会自动将其转化为eclipse认得到的web项目，
+在项目上面点击右键run as 的run on server可以用，但是当eclipse没有安装wtp插件时run on server则不用，
+此时的解决方式为用命令行切换到项目的根目录然后执行 mvn eclipse:eclipse –Dwtpversion=1.0即可解决。
