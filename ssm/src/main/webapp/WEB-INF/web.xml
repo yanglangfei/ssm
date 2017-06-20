@@ -8,10 +8,9 @@
 	</welcome-file-list>
 	
 	<!-- <listener>
-  		<listener-class>
-  			 org.springframework.web.context.ContextLoaderListener
-  		</listener-class>
- 	</listener> -->
+	  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	 -->
 	
 	<!-- 如果是用mvn命令生成的xml，需要修改servlet版本为3.1 -->
 	<!-- 配置DispatcherServlet -->
@@ -32,6 +31,7 @@
 		<!-- 默认匹配所有的请求 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 
 	<!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->
 	<!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->
