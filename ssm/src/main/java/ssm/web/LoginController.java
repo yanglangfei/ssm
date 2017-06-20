@@ -15,7 +15,7 @@ public class LoginController {
 		// 如果登录失败从request中获取认证异常信息,shiroLoginFailure就是shiro异常类的全限定名
 		String exceptionClassName = (String) req
 				.getAttribute("shiroLoginFailure");
-		System.out.println("=============================");
+		System.out.println("======="+exceptionClassName+"===========");
 		// 根据shiro返回的异常类路径判断，抛出指定异常信息
 		if (exceptionClassName != null) {
 			if (UnknownAccountException.class.getName().equals(

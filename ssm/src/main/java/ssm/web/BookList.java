@@ -24,7 +24,6 @@ public class BookList {
 
 	@Autowired
 	BookService bookService;
-
 	@RequestMapping(value = "/{bookId}/detail", method = RequestMethod.GET)
 	public String queryBooks(@PathVariable("bookId") Long bookId, Model model) {
 		if (bookId == null) {

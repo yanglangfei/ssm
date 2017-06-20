@@ -32,7 +32,8 @@
                 /style/**=anon -->
                 <!--/**=anon 表示所有的url都可以匿名访问，anon是shiro中一个过滤器的简写，关于shiro中的过滤器介绍见-->
                <!--  /**=anon -->
-               /layui**=anon
+               /images/**=anon
+               /layui/**=anon
                 /** = authc
             </value>
         </property>
@@ -45,6 +46,6 @@
     </bean>
 
     <!--自定义realm-->
-    <bean id="customRealm" class="shiro.CustomRealm">
+    <bean id="customRealm" class="ssm.relm.MyReale">
     </bean>
 </beans>
