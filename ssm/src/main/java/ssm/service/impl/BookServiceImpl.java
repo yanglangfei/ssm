@@ -1,4 +1,4 @@
-package ssm.serviceImpl;
+package ssm.service.impl;
 import java.util.List;
 
 import org.slf4j.Logger;
