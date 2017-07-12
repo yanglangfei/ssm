@@ -52,13 +52,24 @@ public class Schame {
 	 *  每年的10月1号凌晨执行
 	 */
 	private static String cronExpression3="0 0 24 1 10 * ? *";
+	
+	/*
+	 * 每年的11月11日11时11分11秒 、12月11日11时11分11秒 执行
+	 */
+	private static String cronExpression4="11 11 11 11 11,12 ? *";
+	
 
 	public static void main(String[] args) {
 		JobDetail detail = JobBuilder.newJob(MyJob.class)
 				.withIdentity("myDetail", "group1").build();
+		
+		JobDetail detail2=JobBuilder.newJob(MyJob.class)
+				.withIdentity("myDetail2", "group2")
+				.build();
+		
 		SimpleTrigger simpleTrigger = (SimpleTrigger) TriggerBuilder.newTrigger()
 				.startNow()
-				.withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(1))
+				.withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(2))
 				.build();
 
 		CoreTrigger coreTrigger = (CoreTrigger) TriggerBuilder.newTrigger()
@@ -67,8 +78,8 @@ public class Schame {
 		SchedulerFactory factory = new StdSchedulerFactory();
 		try {
 			Scheduler scheduler = factory.getScheduler();
-			//scheduler.scheduleJob(detail, trigger);
-			scheduler.scheduleJob(detail, coreTrigger);
+			scheduler.scheduleJob(detail, simpleTrigger);
+			scheduler.scheduleJob(detail2, coreTrigger);
 			scheduler.start();
 		} catch (SchedulerException e) {
 			e.printStackTrace();
