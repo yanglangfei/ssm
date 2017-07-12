@@ -67,6 +67,7 @@ public class Schame {
 				.withIdentity("myDetail2", "group2")
 				.build();
 		
+		
 		SimpleTrigger simpleTrigger = (SimpleTrigger) TriggerBuilder.newTrigger()
 				.startNow()
 				.withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(2))
