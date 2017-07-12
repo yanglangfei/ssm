@@ -8,13 +8,13 @@ public interface AppointmentDao {
 	/**
 	 * @param bookId
 	 * @param studentId
-	 * @return  添加预定信息
+	 * @return  娣诲姞棰勫畾淇℃伅
 	 */
 	int insertAppoint(@Param("bookId") long bookId,@Param("studentId") long studentId);
 	/**
 	 * @param bookId
 	 * @param studentId
-	 * @return  获取预定信息
+	 * @return  鑾峰彇棰勫畾淇℃伅
 	 */
 	Appointment queryByKeyWithBook(@Param("bookId") long bookId,@Param("studentId") long studentId);
 

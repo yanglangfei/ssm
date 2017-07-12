@@ -2,36 +2,35 @@ package ssm.dto;
 
 import ssm.entity.Appointment;
 import ssm.enums.AppointStateEnum;
-
 /**
- * @author ÑîÀÊ·É
+ * @author æ¨æœ—é£
  * 
- *   ·â×°Ô¤Ô¼Ö´ĞĞºóµÄ½á¹û
+ *   å°è£…é¢„çº¦æ‰§è¡Œåçš„ç»“æœ
  */
 public class AppointExecution {
-	// Í¼ÊéID
+	// å›¾ä¹¦ID
 	private long bookId;
 
-	// ÃëÉ±Ô¤Ô¼½á¹û×´Ì¬
+	// ç§’æ€é¢„çº¦ç»“æœçŠ¶æ€
 	private int state;
 
-	// ×´Ì¬±êÊ¶
+	// çŠ¶æ€æ ‡è¯†
 	private String stateInfo;
 
-	// Ô¤Ô¼³É¹¦¶ÔÏó
+	// é¢„çº¦æˆåŠŸå¯¹è±¡
 	private Appointment appointment;
 
 	public AppointExecution() {
 	}
 
-	// Ô¤Ô¼Ê§°ÜµÄ¹¹ÔìÆ÷
+	// é¢„çº¦å¤±è´¥çš„æ„é€ å™¨
 	public AppointExecution(long bookId, AppointStateEnum stateEnum) {
 		this.bookId = bookId;
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
 	}
 
-	// Ô¤Ô¼³É¹¦µÄ¹¹ÔìÆ÷
+	// é¢„çº¦æˆåŠŸçš„æ„é€ å™¨
 	public AppointExecution(long bookId, AppointStateEnum stateEnum,
 			Appointment appointment) {
 		this.bookId = bookId;

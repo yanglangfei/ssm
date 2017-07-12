@@ -10,21 +10,21 @@ public interface BookDao {
 	
 	/**
 	 * @param id
-	 * @return  根据id获取图书信息
+	 * @return  鏍规嵁id鑾峰彇鍥句功淇℃伅
 	 */
 	Book queryById(long bookId);
 	
 	/**
-	 * 两个参数需要添加注解，否则 batis 识别不了
-	 * @param offset  起始位置
-	 * @param limit   查询条数
-	 * @return  获取全部图书信息
+	 * 涓や釜鍙傛暟闇�瑕佹坊鍔犳敞瑙ｏ紝鍚﹀垯 batis 璇嗗埆涓嶄簡
+	 * @param offset  璧峰浣嶇疆
+	 * @param limit   鏌ヨ鏉℃暟
+	 * @return  鑾峰彇鍏ㄩ儴鍥句功淇℃伅
 	 */
 	List<Book>  queryAll(@Param("offset") int offset,@Param("limit") int limit);
 	
 	/**
 	 * @param bookId
-	 * @return  图书减少数量
+	 * @return  鍥句功鍑忓皯鏁伴噺
 	 */
 	int reduceNum(long bookId);
 	

@@ -1,12 +1,12 @@
 package ssm.enums;
 
 /**
- * @author ���ʷ�
- *   ԤԼ���
+ * @author 杨朗飞
+ *   预约结果
  */
 public enum AppointStateEnum {
-	SUCCESS(1, "ԤԼ�ɹ�"), NO_NUMBER(0, "��治��"), REPEAT_APPOINT(-1, "�ظ�ԤԼ"), INNER_ERROR(
-			-2, "ϵͳ�쳣");
+	SUCCESS(1, "预约成功"), NO_NUMBER(0, "库存不足"), REPEAT_APPOINT(-1, "重复预约"), INNER_ERROR(
+			-2, "系统异常");
 	
 	private int state;
 

@@ -1,23 +1,23 @@
 package ssm.dto;
 
 public class Result<T> {
-	private boolean success;// 是否成功标志
+	private boolean success;// 鏄惁鎴愬姛鏍囧織
 
-	private T data;// 成功时返回的数据
+	private T data;// 鎴愬姛鏃惰繑鍥炵殑鏁版嵁
 
-	private String error;// 错误信息
+	private String error;// 閿欒淇℃伅
 
 	public Result() {
 		
 	}
 
-	// 成功时的构造器
+	// 鎴愬姛鏃剁殑鏋勯�犲櫒
 	public Result(boolean success, T data) {
 		this.success = success;
 		this.data = data;
 	}
 
-	// 错误时的构造器
+	// 閿欒鏃剁殑鏋勯�犲櫒
 	public Result(boolean success, String error) {
 		this.success = success;
 		this.error = error;

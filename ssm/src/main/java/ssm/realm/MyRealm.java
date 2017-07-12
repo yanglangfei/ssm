@@ -16,44 +16,44 @@ import org.apache.shiro.subject.Subject;
 public class MyRealm extends AuthorizingRealm {
 
 	/**
-	 * Îªµ±Ç°µÇÂ¼µÄSubjectÊÚÓè½ÇÉ«ºÍÈ¨ÏŞ
+	 * ä¸ºå½“å‰ç™»å½•çš„Subjectæˆäºˆè§’è‰²å’Œæƒé™
 	 * 
-	 * @see ¾­²âÊÔ:±¾ÀıÖĞ¸Ã·½·¨µÄµ÷ÓÃÊ±»úÎªĞèÊÚÈ¨×ÊÔ´±»·ÃÎÊÊ±
-	 * @see ¾­²âÊÔ:²¢ÇÒÃ¿´Î·ÃÎÊĞèÊÚÈ¨×ÊÔ´Ê±¶¼»áÖ´ĞĞ¸Ã·½·¨ÖĞµÄÂß¼­,Õâ±íÃ÷±¾ÀıÖĞÄ¬ÈÏ²¢Î´ÆôÓÃAuthorizationCache
-	 * @see ¸öÈË¸Ğ¾õÈôÊ¹ÓÃÁËSpring3
-	 *      .1¿ªÊ¼Ìá¹©µÄConcurrentMapCacheÖ§³Ö,Ôò¿ÉÁé»î¾ö¶¨ÊÇ·ñÆôÓÃAuthorizationCache
-	 * @see ±ÈÈçËµÕâÀï´ÓÊı¾İ¿â»ñÈ¡È¨ÏŞĞÅÏ¢Ê±,ÏÈÈ¥·ÃÎÊSpring3.1Ìá¹©µÄ»º´æ,¶ø²»Ê¹ÓÃShiorÌá¹©µÄAuthorizationCache
+	 * @see ç»æµ‹è¯•:æœ¬ä¾‹ä¸­è¯¥æ–¹æ³•çš„è°ƒç”¨æ—¶æœºä¸ºéœ€æˆæƒèµ„æºè¢«è®¿é—®æ—¶
+	 * @see ç»æµ‹è¯•:å¹¶ä¸”æ¯æ¬¡è®¿é—®éœ€æˆæƒèµ„æºæ—¶éƒ½ä¼šæ‰§è¡Œè¯¥æ–¹æ³•ä¸­çš„é€»è¾‘,è¿™è¡¨æ˜æœ¬ä¾‹ä¸­é»˜è®¤å¹¶æœªå¯ç”¨AuthorizationCache
+	 * @see ä¸ªäººæ„Ÿè§‰è‹¥ä½¿ç”¨äº†Spring3
+	 *      .1å¼€å§‹æä¾›çš„ConcurrentMapCacheæ”¯æŒ,åˆ™å¯çµæ´»å†³å®šæ˜¯å¦å¯ç”¨AuthorizationCache
+	 * @see æ¯”å¦‚è¯´è¿™é‡Œä»æ•°æ®åº“è·å–æƒé™ä¿¡æ¯æ—¶,å…ˆå»è®¿é—®Spring3.1æä¾›çš„ç¼“å­˜,è€Œä¸ä½¿ç”¨Shioræä¾›çš„AuthorizationCache
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
-		// »ñÈ¡µ±Ç°µÇÂ¼µÄÓÃ»§Ãû,µÈ¼ÛÓÚ(String)principals.fromRealm(this.getName()).iterator().next()
+		// è·å–å½“å‰ç™»å½•çš„ç”¨æˆ·å,ç­‰ä»·äº(String)principals.fromRealm(this.getName()).iterator().next()
 		String curentUser = (String) super.getAvailablePrincipal(principals);
-		System.err.println("ÊÚÈ¨:" + curentUser);
+		System.err.println("æˆæƒ:" + curentUser);
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-		// Êµ¼ÊÖĞ¿ÉÄÜ»áÏñÉÏÃæ×¢ÊÍµÄÄÇÑù´ÓÊı¾İ¿âÈ¡µÃ
+		// å®é™…ä¸­å¯èƒ½ä¼šåƒä¸Šé¢æ³¨é‡Šçš„é‚£æ ·ä»æ•°æ®åº“å–å¾—
 		if (curentUser != null && curentUser.equals("jack")) {
-			// Ìí¼ÓÒ»¸ö½ÇÉ«,²»ÊÇÅäÖÃÒâÒåÉÏµÄÌí¼Ó,¶øÊÇÖ¤Ã÷¸ÃÓÃ»§ÓµÓĞadmin½ÇÉ«
+			// æ·»åŠ ä¸€ä¸ªè§’è‰²,ä¸æ˜¯é…ç½®æ„ä¹‰ä¸Šçš„æ·»åŠ ,è€Œæ˜¯è¯æ˜è¯¥ç”¨æˆ·æ‹¥æœ‰adminè§’è‰²
 			authorizationInfo.addRole("admin");
-			// Ìí¼ÓÈ¨ÏŞ
+			// æ·»åŠ æƒé™
 			authorizationInfo.addStringPermission("admin:manager");
-			System.out.println("ÒÑÎªÓÃ»§[jack]¸³ÓèÁË[admin]½ÇÉ«ºÍ[admin:manage]È¨ÏŞ");
+			System.out.println("å·²ä¸ºç”¨æˆ·[jack]èµ‹äºˆäº†[admin]è§’è‰²å’Œ[admin:manage]æƒé™");
 			return authorizationInfo;
 		}
-		// Èô¸Ã·½·¨Ê²Ã´¶¼²»×öÖ±½Ó·µ»ØnullµÄ»°,¾Í»áµ¼ÖÂÈÎºÎÓÃ»§·ÃÎÊ/admin/listUser.jspÊ±¶¼»á×Ô¶¯Ìø×ªµ½unauthorizedUrlÖ¸¶¨µÄµØÖ·
-		// Ïê¼ûapplicationContext.xmlÖĞµÄ<bean id="shiroFilter">µÄÅäÖÃ
+		// è‹¥è¯¥æ–¹æ³•ä»€ä¹ˆéƒ½ä¸åšç›´æ¥è¿”å›nullçš„è¯,å°±ä¼šå¯¼è‡´ä»»ä½•ç”¨æˆ·è®¿é—®/admin/listUser.jspæ—¶éƒ½ä¼šè‡ªåŠ¨è·³è½¬åˆ°unauthorizedUrlæŒ‡å®šçš„åœ°å€
+		// è¯¦è§applicationContext.xmlä¸­çš„<bean id="shiroFilter">çš„é…ç½®
 		return null;
 	}
 
 	/**
-	 * ÑéÖ¤µ±Ç°µÇÂ¼µÄSubject
+	 * éªŒè¯å½“å‰ç™»å½•çš„Subject
 	 * 
-	 * @see ¾­²âÊÔ:±¾ÀıÖĞ¸Ã·½·¨µÄµ÷ÓÃÊ±»úÎªLoginController.login()·½·¨ÖĞÖ´ĞĞSubject.login()Ê±
+	 * @see ç»æµ‹è¯•:æœ¬ä¾‹ä¸­è¯¥æ–¹æ³•çš„è°ƒç”¨æ—¶æœºä¸ºLoginController.login()æ–¹æ³•ä¸­æ‰§è¡ŒSubject.login()æ—¶
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
-		// »ñÈ¡»ùÓÚÓÃ»§ÃûºÍÃÜÂëµÄÁîÅÆ
+		// è·å–åŸºäºç”¨æˆ·åå’Œå¯†ç çš„ä»¤ç‰Œ
 		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
 		if ("jack".equals(usernamePasswordToken.getUsername())) {
 			AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
@@ -66,15 +66,15 @@ public class MyRealm extends AuthorizingRealm {
 	}
 
 	/**
-	 * ½«Ò»Ğ©Êı¾İ·Åµ½ShiroSessionÖĞ,ÒÔ±ãÓÚÆäËüµØ·½Ê¹ÓÃ
+	 * å°†ä¸€äº›æ•°æ®æ”¾åˆ°ShiroSessionä¸­,ä»¥ä¾¿äºå…¶å®ƒåœ°æ–¹ä½¿ç”¨
 	 * 
-	 * @see ±ÈÈçController,Ê¹ÓÃÊ±Ö±½ÓÓÃHttpSession.getAttribute(key)¾Í¿ÉÒÔÈ¡µ½
+	 * @see æ¯”å¦‚Controller,ä½¿ç”¨æ—¶ç›´æ¥ç”¨HttpSession.getAttribute(key)å°±å¯ä»¥å–åˆ°
 	 */
 	private void setSession(String key, String value) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject != null) {
 			Session session = subject.getSession();
-			System.out.println("session ³¬Ê±Ê±¼ä:¡¾" + session.getTimeout() + "¡¿");
+			System.out.println("session è¶…æ—¶æ—¶é—´:ã€" + session.getTimeout() + "ã€‘");
 			if (null != session) {
 				session.setAttribute(key, value);
 			}

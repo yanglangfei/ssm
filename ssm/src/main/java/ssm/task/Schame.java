@@ -1,6 +1,4 @@
 package ssm.task;
-
-import org.quartz.CronExpression;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -12,7 +10,6 @@ import org.quartz.SimpleTrigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.triggers.CoreTrigger;
-
 /*
  * 字段	 	允许值	 	                 允许的特殊字符
        秒	 	0-59	 	        , - * /
@@ -41,12 +38,25 @@ import org.quartz.impl.triggers.CoreTrigger;
  */
 public class Schame {
 	
+	/*
+	 * 每天 12：:3 执行
+	 */
 	private static String cronExpression = "0 30 12 * * ? *";
+	
+	/**
+	 *  每月的8号 凌晨执行
+	 */
+	private static String cronExpression2="0 0 24 8 * * ? *";
+	
+	/**
+	 *  每年的10月1号凌晨执行
+	 */
+	private static String cronExpression3="0 0 24 1 10 * ? *";
 
 	public static void main(String[] args) {
 		JobDetail detail = JobBuilder.newJob(MyJob.class)
 				.withIdentity("myDetail", "group1").build();
-		SimpleTrigger trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+		SimpleTrigger simpleTrigger = (SimpleTrigger) TriggerBuilder.newTrigger()
 				.startNow()
 				.withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(1))
 				.build();

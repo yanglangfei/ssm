@@ -12,23 +12,23 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	public String login(HttpServletRequest req) {
-		// Èç¹ûµÇÂ¼Ê§°Ü´ÓrequestÖĞ»ñÈ¡ÈÏÖ¤Òì³£ĞÅÏ¢,shiroLoginFailure¾ÍÊÇshiroÒì³£ÀàµÄÈ«ÏŞ¶¨Ãû
+		// å¦‚æœç™»å½•å¤±è´¥ä»requestä¸­è·å–è®¤è¯å¼‚å¸¸ä¿¡æ¯,shiroLoginFailureå°±æ˜¯shiroå¼‚å¸¸ç±»çš„å…¨é™å®šå
 		String exceptionClassName = (String) req
 				.getAttribute("shiroLoginFailure");
 		System.out.println("======="+exceptionClassName+"===========");
-		// ¸ù¾İshiro·µ»ØµÄÒì³£ÀàÂ·¾¶ÅĞ¶Ï£¬Å×³öÖ¸¶¨Òì³£ĞÅÏ¢
+		// æ ¹æ®shiroè¿”å›çš„å¼‚å¸¸ç±»è·¯å¾„åˆ¤æ–­ï¼ŒæŠ›å‡ºæŒ‡å®šå¼‚å¸¸ä¿¡æ¯
 		if (exceptionClassName != null) {
 			if (UnknownAccountException.class.getName().equals(
 					exceptionClassName)) {
-				// ×îÖÕ»áÅ×¸øÒì³£´¦ÀíÆ÷
-				//throw new CustomException("ÕËºÅ²»´æÔÚ");
+				// æœ€ç»ˆä¼šæŠ›ç»™å¼‚å¸¸å¤„ç†å™¨
+				//throw new CustomException("è´¦å·ä¸å­˜åœ¨");
 			} else if (IncorrectCredentialsException.class.getName().equals(
 					exceptionClassName)) {
-				//throw new CustomException("ÓÃ»§Ãû/ÃÜÂë´íÎó");
+				//throw new CustomException("ç”¨æˆ·å/å¯†ç é”™è¯¯");
 			} else if ("randomCodeError".equals(exceptionClassName)) {
-				//throw new CustomException("ÑéÖ¤Âë´íÎó");
+				//throw new CustomException("éªŒè¯ç é”™è¯¯");
 			} else {
-				//throw new Exception();// ×îÖÕÔÚÒì³£´¦ÀíÆ÷Éú³ÉÎ´Öª´íÎó
+				//throw new Exception();// æœ€ç»ˆåœ¨å¼‚å¸¸å¤„ç†å™¨ç”ŸæˆæœªçŸ¥é”™è¯¯
 			}
 		}
 		return "list";

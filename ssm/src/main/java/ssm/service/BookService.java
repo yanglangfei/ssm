@@ -4,12 +4,12 @@ import ssm.dto.AppointExecution;
 import ssm.entity.Book;
 
 /**
- * ÒµÎñ½Ó¿Ú£ºÕ¾ÔÚ"Ê¹ÓÃÕß"½Ç¶ÈÉè¼Æ½Ó¿Ú Èı¸ö·½Ãæ£º·½·¨¶¨ÒåÁ£¶È£¬²ÎÊı£¬·µ»ØÀàĞÍ£¨return ÀàĞÍ/Òì³££©
+ * ä¸šåŠ¡æ¥å£ï¼šç«™åœ¨"ä½¿ç”¨è€…"è§’åº¦è®¾è®¡æ¥å£ ä¸‰ä¸ªæ–¹é¢ï¼šæ–¹æ³•å®šä¹‰ç²’åº¦ï¼Œå‚æ•°ï¼Œè¿”å›ç±»å‹ï¼ˆreturn ç±»å‹/å¼‚å¸¸ï¼‰
  */
 public interface BookService {
 
 	/**
-	 * ²éÑ¯Ò»±¾Í¼Êé
+	 * æŸ¥è¯¢ä¸€æœ¬å›¾ä¹¦
 	 * 
 	 * @param bookId
 	 * @return
@@ -17,14 +17,14 @@ public interface BookService {
 	Book getById(long bookId);
 
 	/**
-	 * ²éÑ¯ËùÓĞÍ¼Êé
+	 * æŸ¥è¯¢æ‰€æœ‰å›¾ä¹¦
 	 * 
 	 * @return
 	 */
 	List<Book> getList();
 
 	/**
-	 * Ô¤Ô¼Í¼Êé
+	 * é¢„çº¦å›¾ä¹¦
 	 * 
 	 * @param bookId
 	 * @param studentId
